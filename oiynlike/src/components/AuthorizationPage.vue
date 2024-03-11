@@ -77,7 +77,12 @@
             password: this.loginForm.password
           });
           
+          console.log('Response:', response);
+
           if (response.status === 200) {
+            const token = response.data.token; // Получаем токен из ответа сервера
+            console.log('Полученный токен:', token);
+            localStorage.setItem('userToken', token);
             alert('Успешный вход');
             this.loggedIn = true;
             this.loggedInUser = this.loginForm.email;

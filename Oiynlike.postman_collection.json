@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "83f7e903-038d-457e-909a-83a6b2403991",
+		"name": "Oiynlike",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6855907"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\":\"Ais\", \n    \"last_name\": \"Bazarkulova\", \n    \"password\": \"aisaisias\",\n    \"email\": \"aisais@gmail.com\",\n    \"user_type\": \"USER\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}users/signup",
+					"host": [
+						"{{url}}users"
+					],
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"aisais@gmail.com\",\n    \"password\": \"aisaisias\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}users/login",
+					"host": [
+						"{{url}}users"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create game cards",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenU}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1ha2VtYWtldGVzdEBnbWFpbC5jb20iLCJleHAiOjE3MDk1MTA3NDYsImZpcnN0TmFtZSI6InRlc3QiLCJsYXN0TmFtZSI6InRlc3QiLCJ1aWQiOiI2NWJkODM0ZWUwNTc5NzNkYWFhODQwNmYiLCJ1c2VyVHlwZSI6IlVTRVIifQ.QvnlRq1g2sjHld0djliuPFsDvL0P5HZEQ1T9zPzS0Lk",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Только этот gamecard должен выйти\",\n    \"description\": \"it should not creat gamecard\",\n    \"max_players\": 13, \n    \"scheduled_time\": \"2024-02-29T12:34:56Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/gamecards",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"gamecards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get active game card in main page",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenU}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"page\": 1,\n    \"limit\": 20\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/gamecards?page=1&limit=10",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"gamecards"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get active game card in main page",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/gamecards?page=1&limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"gamecards"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Feb 2024 20:02:18 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1721"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"65c38ae6137f6aa197565bf2\",\n        \"host_user\": {\n            \"id\": \"000000000000000000000000\",\n            \"first_name\": \"<nil>\",\n            \"last_name\": \"<nil>\",\n            \"password\": null,\n            \"email\": null,\n            \"phone\": null,\n            \"token\": null,\n            \"user_type\": null,\n            \"refresh_token\": null,\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"updated_at\": \"0001-01-01T00:00:00Z\",\n            \"user_id\": \"65c38ab3137f6aa197565bf0\"\n        },\n        \"title\": \"Adilet's first card\",\n        \"description\": \"this is my first game card\",\n        \"max_players\": 40,\n        \"status\": \"active\",\n        \"current_players\": 1,\n        \"matched_players\": [],\n        \"created_at\": \"2024-02-07T13:51:34.448Z\",\n        \"updated_at\": \"2024-02-07T13:51:34.448Z\"\n    },\n    {\n        \"_id\": \"65c38af1137f6aa197565bf3\",\n        \"host_user\": {\n            \"id\": \"000000000000000000000000\",\n            \"first_name\": \"<nil>\",\n            \"last_name\": \"<nil>\",\n            \"password\": null,\n            \"email\": null,\n            \"phone\": null,\n            \"token\": null,\n            \"user_type\": null,\n            \"refresh_token\": null,\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"updated_at\": \"0001-01-01T00:00:00Z\",\n            \"user_id\": \"65c38ab3137f6aa197565bf0\"\n        },\n        \"title\": \"Adilet's second card\",\n        \"description\": \"this is my first game card\",\n        \"max_players\": 40,\n        \"status\": \"active\",\n        \"current_players\": 1,\n        \"matched_players\": [],\n        \"created_at\": \"2024-02-07T13:51:45.986Z\",\n        \"updated_at\": \"2024-02-07T13:51:45.986Z\"\n    },\n    {\n        \"_id\": \"65c38aff137f6aa197565bf4\",\n        \"host_user\": {\n            \"id\": \"000000000000000000000000\",\n            \"first_name\": \"<nil>\",\n            \"last_name\": \"<nil>\",\n            \"password\": null,\n            \"email\": null,\n            \"phone\": null,\n            \"token\": null,\n            \"user_type\": null,\n            \"refresh_token\": null,\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"updated_at\": \"0001-01-01T00:00:00Z\",\n            \"user_id\": \"65c38ab3137f6aa197565bf0\"\n        },\n        \"title\": \"Adilet's third card\",\n        \"description\": \"this is my first game card\",\n        \"max_players\": 40,\n        \"status\": \"active\",\n        \"current_players\": 1,\n        \"matched_players\": [],\n        \"created_at\": \"2024-02-07T13:51:59.464Z\",\n        \"updated_at\": \"2024-02-07T13:51:59.464Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "user game cards",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenU}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/user/gamecards",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"user",
+						"gamecards"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "active",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "10",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "join game",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenf}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"gameCardID\": \"65bd8856a0f674f58813568c\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/join",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"join"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update gameCard",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenais}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"active\", //inactive, moderating\n    \"description\": \"this is description\", \n    \"title\": \"this is title\", \n    \"max_players\": 123,\n    \"scheduled_time\": \"2024-02-29T12:34:56Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/gameCards/65db5475ed33b17711124f01",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"gameCards",
+						"65db5475ed33b17711124f01"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
