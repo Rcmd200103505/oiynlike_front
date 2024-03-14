@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import AuthorizationPage from '@/components/AuthorizationPage.vue';
 import DashboardPage from '@/components/DashboardPage.vue';
+import ProfilePage from '@/components/ProfilePage.vue';
 
 const routes = [
   {
@@ -12,6 +13,12 @@ const routes = [
     path: '/dashboard',
     name: 'DashboardPage',
     component: DashboardPage,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/profile',
+    name: 'ProfilePage',
+    component: ProfilePage,
     meta: { requiresAuth: true }
   },
   // Другие маршруты
